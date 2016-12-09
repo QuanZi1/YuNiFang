@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by 三岁 on 2016/12/6.
  */
-public class FourActivity extends Activity implements View.OnClickListener{
+public class FourActivity extends FragmentActivity implements View.OnClickListener{
 
     private TextView btHome;
     private TextView btClassify;
@@ -37,7 +38,18 @@ public class FourActivity extends Activity implements View.OnClickListener{
         //初始化界面
         initView();
 
+        initData();
+
     }
+
+    private void initData() {
+        btHome.setSelected(true);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.fram1,new FirstFragment()).commit();
+    }
+
+
 
     private void initView() {
 
@@ -56,6 +68,8 @@ public class FourActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
         switch (v.getId()){
             case R.id.bt_home:
                 btHome.setSelected(true);
@@ -67,6 +81,9 @@ public class FourActivity extends Activity implements View.OnClickListener{
                 btShop.setTextColor(Color.GRAY);
                 btClassify.setTextColor(Color.GRAY);
                 btUser.setTextColor(Color.GRAY);
+
+                android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.fram1,new FirstFragment()).commit();
                 break;
             case R.id.bt_classify:
                 btHome.setSelected(false);
@@ -78,6 +95,9 @@ public class FourActivity extends Activity implements View.OnClickListener{
                 btShop.setTextColor(Color.GRAY);
                 btClassify.setTextColor(Color.RED);
                 btUser.setTextColor(Color.GRAY);
+
+                android.support.v4.app.FragmentTransaction transaction1 = fragmentManager.beginTransaction();
+                transaction1.add(R.id.fram1,new TypeFragment()).commit();
                 break;
             case R.id.bt_shop:
                 btHome.setSelected(false);
@@ -89,6 +109,9 @@ public class FourActivity extends Activity implements View.OnClickListener{
                 btShop.setTextColor(Color.RED);
                 btClassify.setTextColor(Color.GRAY);
                 btUser.setTextColor(Color.GRAY);
+
+                android.support.v4.app.FragmentTransaction transaction2 = fragmentManager.beginTransaction();
+                transaction2.add(R.id.fram1,new ShopFragment()).commit();
                 break;
             case R.id.bt_user:
                 btHome.setSelected(false);
@@ -100,6 +123,9 @@ public class FourActivity extends Activity implements View.OnClickListener{
                 btShop.setTextColor(Color.GRAY);
                 btClassify.setTextColor(Color.GRAY);
                 btUser.setTextColor(Color.RED);
+
+                android.support.v4.app.FragmentTransaction transaction3 = fragmentManager.beginTransaction();
+                transaction3.add(R.id.fram1,new UserFragment()).commit();
                 break;
         }
 

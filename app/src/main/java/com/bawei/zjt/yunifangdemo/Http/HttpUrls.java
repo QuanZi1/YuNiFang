@@ -6,6 +6,6 @@ package com.bawei.zjt.yunifangdemo.Http;
 
 public class HttpUrls {
 
-
+    public static final String homeUrl = "http://m.yunifang.com/yunifang/mobile/home";
 
 }
